@@ -12,3 +12,4 @@ class CustomUser(AbstractUser):
     pending_friend_requests = models.ManyToManyField('self', blank=True)
     blocked_users = models.ManyToManyField('self', blank=True) 
     profile_picture = models.ImageField(default='default.png')
+
