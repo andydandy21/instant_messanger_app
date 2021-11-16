@@ -45,6 +45,7 @@ class Role(models.Model):
 class Notification(models.Model):
 
     read = models.BooleanField(default=False)
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
     for_message = models.BooleanField()
     for_chatroom_inv = models.BooleanField()
     for_friend_request = models.BooleanField()
