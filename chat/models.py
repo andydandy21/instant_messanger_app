@@ -11,8 +11,8 @@ class Chatroom(models.Model):
     slug = models.SlugField()
     name = models.CharField(max_length=200)
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    added_users = models.ManyToManyField(get_user_model())
-    banned_users = models.ManyToManyField(get_user_model())
+    added_users = models.ManyToManyField(get_user_model(), blank=True)
+    banned_users = models.ManyToManyField(get_user_model(), blank=True)
     date_created = models.DateTimeField(defualt=timezone.now)
 
     #create a slug automatically from name on save
