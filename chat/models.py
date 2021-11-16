@@ -10,9 +10,9 @@ class Chatroom(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     slug = models.SlugField()
     name = models.CharField(max_length=200)
-    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    added_users = models.ManyToManyField(get_user_model(), blank=True)
-    banned_users = models.ManyToManyField(get_user_model(), blank=True)
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='owner')
+    added_users = models.ManyToManyField(get_user_model(), blank=True, related_name='added_users')
+    banned_users = models.ManyToManyField(get_user_model(), blank=True, related_name='banned_users')
     date_created = models.DateTimeField(default=timezone.now)
 
     #create a slug automatically from name on save
@@ -31,7 +31,7 @@ class Message(models.Model):
 
 class Role(models.Model):
 
-    users = models.ManyToManyField(get_user_model(), blank=True)
+    users = models.ManyToManyField(get_user_model(), blank=True, related_name='users')
     name = models.CharField(max_length=50)
     chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE)
     #permissions

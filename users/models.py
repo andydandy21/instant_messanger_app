@@ -8,8 +8,8 @@ class CustomUser(AbstractUser):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     friend_code = models.CharField(default=get_random_string, max_length=12, unique=True, editable=False)
-    friends = models.ManyToManyField('self', blank=True)
-    pending_friend_requests = models.ManyToManyField('self', blank=True)
-    blocked_users = models.ManyToManyField('self', blank=True) 
+    friends = models.ManyToManyField('self', blank=True, related_name='friends')
+    pending_friend_requests = models.ManyToManyField('self', blank=True, related_name='friend_requests')
+    blocked_users = models.ManyToManyField('self', blank=True, related_name='blocked_users') 
     profile_picture = models.ImageField(default='default.png')
 
