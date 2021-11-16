@@ -13,7 +13,7 @@ class Chatroom(models.Model):
     owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     added_users = models.ManyToManyField(get_user_model(), blank=True)
     banned_users = models.ManyToManyField(get_user_model(), blank=True)
-    date_created = models.DateTimeField(defualt=timezone.now)
+    date_created = models.DateTimeField(default=timezone.now)
 
     #create a slug automatically from name on save
     def save(self, *args, **kwargs):
