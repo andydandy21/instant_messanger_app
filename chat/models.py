@@ -46,8 +46,8 @@ class Notification(models.Model):
 
     read = models.BooleanField(default=False)
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
-    for_message = models.BooleanField()
-    for_chatroom_inv = models.BooleanField()
-    for_friend_request = models.BooleanField()
-    for_friend_added = models.BooleanField()
+    for_message = models.BooleanField(default=False)
+    for_chatroom_inv = models.BooleanField(default=False)
+    for_friend_request = models.BooleanField(default=False)
+    for_friend_added = models.BooleanField(default=False)
 
