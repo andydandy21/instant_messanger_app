@@ -3,25 +3,25 @@ from rest_framework import serializers
 from .models import *
 
 
-class ChatroomSerializer(serlializers.HyperlinkedModelSerializer):
+class ChatroomSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Chatroom
         fields = '__all__'
 
-class MessageSerializer(serlializers.HyperlinkedModelSerializer):
+class MessageSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Message
         fields = '__all__'
 
-class RoleSerializer(serlializers.HyperlinkedModelSerializer):
+class RoleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Role
         fields = '__all__'
 
-class NotificationSerializer(serlializers.HyperlinkedModelSerializer):
+class NotificationSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Notification
