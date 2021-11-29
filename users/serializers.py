@@ -8,6 +8,8 @@ class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
         model = get_user_model()
         fields = [
             'id',
+            'username',
+            'email',
             'friend_code',
             'friends',
             'pending_friend_requests',
