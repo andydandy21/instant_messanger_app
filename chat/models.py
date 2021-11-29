@@ -35,12 +35,12 @@ class Role(models.Model):
     name = models.CharField(max_length=50)
     chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE)
     #permissions
-    can_add_role = models.BooleanField()
-    can_change_name = models.BooleanField()
-    can_invite = models.BooleanField()
-    can_kick = models.BooleanField()
-    can_ban = models.BooleanField()
-    can_send_message = models.BooleanField()
+    can_add_role = models.BooleanField(default=False)
+    can_change_name = models.BooleanField(default=False)
+    can_invite = models.BooleanField(default=False)
+    can_kick = models.BooleanField(default=False)
+    can_ban = models.BooleanField(default=False)
+    can_send_message = models.BooleanField(default=False)
 
 class Notification(models.Model):
 
