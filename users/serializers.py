@@ -6,5 +6,12 @@ class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = '__all__'
+        fields = [
+            'id',
+            'friend_code',
+            'friends',
+            'pending_friend_requests',
+            'blocked_users',
+            'profile_picture'
+        ]
         
