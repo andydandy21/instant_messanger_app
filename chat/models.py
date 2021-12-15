@@ -10,9 +10,9 @@ class Chatroom(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     slug = models.SlugField()
     name = models.CharField(max_length=200)
-    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='owner')
-    added_users = models.ManyToManyField(get_user_model(), blank=True, related_name='added_users')
-    banned_users = models.ManyToManyField(get_user_model(), blank=True, related_name='banned_users')
+    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='owned_chatrooms')
+    added_users = models.ManyToManyField(get_user_model(), blank=True, related_name='added_chatrooms')
+    banned_users = models.ManyToManyField(get_user_model(), blank=True, related_name='banned_chatrooms')
     date_created = models.DateTimeField(default=timezone.now)
 
     #create a slug automatically from name on save
@@ -25,15 +25,15 @@ class Message(models.Model):
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     message = models.TextField(max_length=5000)
-    chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE)
+    chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE, related_name='messages')
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     date_created = models.DateTimeField(default=timezone.now)
 
 class Role(models.Model):
 
-    users = models.ManyToManyField(get_user_model(), blank=True, related_name='users')
+    users = models.ManyToManyField(get_user_model(), blank=True, related_name='roles')
     name = models.CharField(max_length=50)
-    chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE)
+    chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE, related_name='roles')
     #permissions
     can_add_role = models.BooleanField(default=False)
     can_change_name = models.BooleanField(default=False)
