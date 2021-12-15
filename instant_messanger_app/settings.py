@@ -73,7 +73,7 @@ REST_FRAMEWORK = {
 
 REST_AUTH_SERIALIZERS = {
     'PASSWORD_RESET_SERIALIZER': 
-        'api.serializers.CustomPasswordResetSerializer',
+        'users.serializers.CustomPasswordResetSerializer',
 }
 
 ROOT_URLCONF = 'instant_messanger_app.urls'
